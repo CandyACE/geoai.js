@@ -35,7 +35,19 @@ export class Tms extends MapSource {
     // TMS uses bottom-left origin, so we need to flip Y coordinate
     const tmsY = Math.pow(2, z) - 1 - y;
     
-    let url = `${instance.baseUrl}/${z}/${x}/${tmsY}.${instance.extension}`;
+    let url: string;
+    
+    // Check if baseUrl contains placeholders {x}, {y}, {z}
+    if (instance.baseUrl.includes('{x}') || instance.baseUrl.includes('{y}') || instance.baseUrl.includes('{z}')) {
+      // Use placeholder-based URL template
+      url = instance.baseUrl
+        .replaceAll('{z}', z.toString())
+        .replaceAll('{x}', x.toString())
+        .replaceAll('{y}', tmsY.toString());
+    } else {
+      // Use traditional baseUrl + path construction for backward compatibility
+      url = `${instance.baseUrl}/${z}/${x}/${tmsY}.${instance.extension}`;
+    }
     
     // Add API key as query parameter if provided
     if (instance.apiKey) {

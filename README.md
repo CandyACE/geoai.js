@@ -166,6 +166,16 @@ GeoAI.js supports multiple map tile providers:
 TMS is a tile-based map specification that uses a bottom-left origin coordinate system. Perfect for custom tile servers and OpenAerialMap.
 
 ```javascript
+// Option 1: Using URL template with placeholders (recommended)
+const pipeline = await geoai.pipeline([{ task: "object-detection" }], {
+  provider: "tms",
+  baseUrl: "https://tile.example.com/tiles/{z}/{x}/{y}.png",
+  apiKey: "your-api-key", // optional
+  tileSize: 256, // optional, defaults to 256
+  attribution: "Custom TMS Provider", // optional
+});
+
+// Option 2: Using base URL (legacy format, still supported)
 const pipeline = await geoai.pipeline([{ task: "object-detection" }], {
   provider: "tms",
   baseUrl: "https://tile.example.com/tiles",
