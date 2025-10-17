@@ -146,6 +146,74 @@ describe('Tms', () => {
 
       expect(customTms.tileSize).toBe(512);
     });
+
+    describe('Placeholder URL format', () => {
+      it('should support {x}, {y}, {z} placeholders in baseUrl', () => {
+        const placeholderTms = new Tms({
+          baseUrl: 'https://example.com/tiles/{z}/{x}/{y}.png',
+          attribution: 'Example',
+        });
+
+        const getTileUrl = placeholderTms.getTileUrlFromTileCoords.bind(placeholderTms);
+        const url = getTileUrl([123, 456, 18], placeholderTms);
+
+        // For TMS, Y coordinate should be flipped: tmsY = (2^18 - 1) - 456 = 261687
+        expect(url).toBe('https://example.com/tiles/18/123/261687.png');
+      });
+
+      it('should support placeholder format with different extension in URL', () => {
+        const placeholderTms = new Tms({
+          baseUrl: 'https://example.com/tiles/{z}/{x}/{y}.jpg',
+          attribution: 'Example',
+        });
+
+        const getTileUrl = placeholderTms.getTileUrlFromTileCoords.bind(placeholderTms);
+        const url = getTileUrl([100, 200, 15], placeholderTms);
+
+        // For z=15, y=200: tmsY = (2^15 - 1) - 200 = 32567
+        expect(url).toBe('https://example.com/tiles/15/100/32567.jpg');
+      });
+
+      it('should support placeholder format with API key', () => {
+        const placeholderTms = new Tms({
+          baseUrl: 'https://example.com/tiles/{z}/{x}/{y}.png',
+          apiKey: 'test-key-456',
+          attribution: 'Example',
+        });
+
+        const getTileUrl = placeholderTms.getTileUrlFromTileCoords.bind(placeholderTms);
+        const url = getTileUrl([10, 20, 5], placeholderTms);
+
+        // For z=5, y=20: tmsY = (2^5 - 1) - 20 = 11
+        expect(url).toBe('https://example.com/tiles/5/10/11.png?apikey=test-key-456');
+      });
+
+      it('should support placeholder format with custom order', () => {
+        const placeholderTms = new Tms({
+          baseUrl: 'https://example.com/map/{x}/{y}/{z}.png',
+          attribution: 'Example',
+        });
+
+        const getTileUrl = placeholderTms.getTileUrlFromTileCoords.bind(placeholderTms);
+        const url = getTileUrl([50, 100, 10], placeholderTms);
+
+        // For z=10, y=100: tmsY = (2^10 - 1) - 100 = 1023 - 100 = 923
+        expect(url).toBe('https://example.com/map/50/923/10.png');
+      });
+
+      it('should support placeholder format without extension in URL', () => {
+        const placeholderTms = new Tms({
+          baseUrl: 'https://example.com/tiles/{z}/{x}/{y}',
+          attribution: 'Example',
+        });
+
+        const getTileUrl = placeholderTms.getTileUrlFromTileCoords.bind(placeholderTms);
+        const url = getTileUrl([5, 10, 3], placeholderTms);
+
+        // For z=3, y=10: tmsY = (2^3 - 1) - 10 = 7 - 10 = -3
+        expect(url).toBe('https://example.com/tiles/3/5/-3');
+      });
+    });
   });
 
   describe('Configuration', () => {
