@@ -9,31 +9,37 @@ GeoAI.js is a TypeScript library for running specialized geospatial AI models in
 ## Development Commands
 
 **Primary workflow:**
+
 - `pnpm dev` - Start development server
-- `pnpm build` - Full build (core + types + package)  
+- `pnpm build` - Full build (core + types + package)
 - `pnpm test` - Run test suite with Vitest
 - `pnpm test:coverage` - Run tests with coverage report
 
 **Quality checks:**
+
 - `pnpm lint:scripts` - Lint TypeScript files with ESLint
 - `pnpm format:scripts` - Format code with Prettier
 - `pnpm test:build` - Test the built package works correctly
 
 **Individual build steps:**
+
 - `pnpm build:core` - TypeScript compilation + Vite build
-- `pnpm build:types` - Generate TypeScript definitions  
+- `pnpm build:types` - Generate TypeScript definitions
 - `pnpm build:package` - Copy package.json to build directory
 
 ## Architecture
 
 ### Core Pipeline System
+
 The main architecture revolves around a pipeline that can chain multiple AI tasks:
+
 - **Pipeline validation**: Checks task dependencies and parameter compatibility
 - **Model registry**: Centralized registry of all the AI models in `src/registry.ts`
 - **Provider abstraction**: Multiple map data providers through `src/data_providers/`
 - **Type safety**: Strong TypeScript typing throughout with core types in `src/core/types.ts`
 
 ### Key Files
+
 - `src/geoai.ts` - Main pipeline implementation and public API
 - `src/registry.ts` - Model registry with all the AI task definitions
 - `src/models/` - Individual AI model implementations
@@ -41,7 +47,9 @@ The main architecture revolves around a pipeline that can chain multiple AI task
 - `src/types/` - Core data types like GeoRawImage, BoundingBox
 
 ### React Integration
+
 React hooks are implemented with sophisticated lifecycle management:
+
 - `useGeoAIWorker` - Advanced hook with full state management
 - `useOptimizedGeoAI` - Helper hook with optimized parameters
 - Web worker support for non-blocking AI inference
@@ -62,6 +70,7 @@ React hooks are implemented with sophisticated lifecycle management:
 ## AI Tasks Architecture
 
 All the AI tasks fall into categories:
+
 - **Detection**: Object detection, zero-shot detection, oriented detection
 - **Segmentation**: Mask generation, building footprints, wetlands
 - **Classification**: Land cover classification

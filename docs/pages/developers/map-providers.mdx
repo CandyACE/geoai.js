@@ -193,7 +193,7 @@ describe("YourProvider", () => {
     it("should generate correct tile URLs", () => {
       const tileCoords: [number, number, number] = [1, 2, 3];
       const url = provider.getTileUrlFromTileCoords(tileCoords, provider);
-      
+
       expect(url).toContain("your-service.com");
       expect(url).toContain("test-api-key");
       expect(url).toContain("1/2/3");
@@ -261,7 +261,7 @@ describe("YourProvider Integration", () => {
 
 Create provider documentation in `docs/pages/map-providers/`:
 
-```markdown
+````markdown
 # Your Provider Map Provider
 
 > Brief description of your provider
@@ -294,6 +294,7 @@ const results = await pipeline.inference({
   mapSourceParams: { zoomLevel: 18 },
 });
 ```
+````
 
 ### Parameters
 
@@ -315,11 +316,11 @@ type YourProviderParams = {
 Update `docs/pages/map-providers.mdx` to include your provider:
 
 ```markdown
-| Provider                           | Features                                  | Authentication |
-| ---------------------------------- | ----------------------------------------- | -------------- |
-| [Geobase](./map-providers/geobase) | Your COG imagery, multispectral support   | API Key        |
-| [Mapbox](./map-providers/mapbox)   | Global satellite imagery                  | Access Token   |
-| [Your Provider](./map-providers/your-provider) | Your provider features              | API Key        |
+| Provider                                       | Features                                | Authentication |
+| ---------------------------------------------- | --------------------------------------- | -------------- |
+| [Geobase](./map-providers/geobase)             | Your COG imagery, multispectral support | API Key        |
+| [Mapbox](./map-providers/mapbox)               | Global satellite imagery                | Access Token   |
+| [Your Provider](./map-providers/your-provider) | Your provider features                  | API Key        |
 ```
 
 ### 8. Update Examples (Optional)
@@ -333,11 +334,13 @@ If you want to include your provider in the examples, update the relevant exampl
 ### 9. Build and Test
 
 1. Run the build process:
+
    ```bash
    pnpm build
    ```
 
 2. Run all tests:
+
    ```bash
    pnpm test
    ```
@@ -383,10 +386,10 @@ If you want to include your provider in the examples, update the relevant exampl
 ## Example Implementation
 
 See the ESRI provider implementation for a complete example:
+
 - `src/data_providers/esri.ts`
 - `test/esri.test.ts`
 - `test/esri-integration.test.ts`
 - `docs/pages/map-providers/esri.mdx`
 
 This implementation follows all the patterns and requirements outlined in this checklist.
-

@@ -31,6 +31,7 @@ npm i geoai
 ```
 
 📦 **Package Links:**
+
 - [npm package](https://www.npmjs.com/package/geoai)
 - [jsDelivr CDN](https://www.jsdelivr.com/package/npm/geoai)
 
@@ -39,11 +40,13 @@ npm i geoai
 You can also use GeoAI directly in the browser via CDN:
 
 #### Unpkg CDN
+
 ```html
 <script src="https://unpkg.com/geoai@1.0.3/geoai.js"></script>
 ```
 
 #### jsDelivr CDN
+
 ```html
 <script src="https://cdn.jsdelivr.net/npm/geoai@1.0.3/geoai.min.js"></script>
 ```
@@ -65,6 +68,7 @@ git subtree add --prefix=examples/01-quickstart https://github.com/decision-labs
 ### Core Library (Node.js and Browser)
 
 #### NPM Installation
+
 ```javascript
 import { geoai } from "geoai";
 
@@ -85,6 +89,7 @@ const result = await pipeline.inference({
 ```
 
 #### CDN Usage
+
 ```javascript
 // When using CDN, geoai is available globally
 const pipeline = await geoai.pipeline([{ task: "object-detection" }], {
@@ -163,6 +168,7 @@ For more see the [supported tasks](https://docs.geobase.app/geoai/supported-task
 GeoAI.js supports multiple map tile providers:
 
 ### TMS (Tile Map Service)
+
 TMS is a tile-based map specification that uses a bottom-left origin coordinate system. Perfect for custom tile servers and OpenAerialMap.
 
 ```javascript
@@ -187,6 +193,7 @@ const pipeline = await geoai.pipeline([{ task: "object-detection" }], {
 ```
 
 ### ESRI
+
 ESRI World Imagery - no API key required.
 
 ```javascript
@@ -196,6 +203,7 @@ const pipeline = await geoai.pipeline([{ task: "object-detection" }], {
 ```
 
 ### Mapbox
+
 Requires a Mapbox API key.
 
 ```javascript
@@ -207,6 +215,7 @@ const pipeline = await geoai.pipeline([{ task: "object-detection" }], {
 ```
 
 ### Geobase
+
 Requires Geobase project credentials.
 
 ```javascript

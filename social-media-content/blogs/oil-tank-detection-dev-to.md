@@ -3,7 +3,15 @@ title: "Side Quest to GeoAI.js - Detect Oil Tanks in Satellite Imagery with geoa
 description: "A year-long journey from a simple side quest to a full-fledged open-source library for geospatial AI in the browser"
 author: "sabman"
 date: "2025-01-27"
-tags: ["geoai", "webgpu", "satellite-imagery", "object-detection", "javascript", "open-source"]
+tags:
+  [
+    "geoai",
+    "webgpu",
+    "satellite-imagery",
+    "object-detection",
+    "javascript",
+    "open-source",
+  ]
 platforms: ["dev.to", "medium"]
 status: "published"
 dev_to_url: "https://dev.to/sabman/detect-oil-tanks-in-satellite-imagery-with-geoaijs-webgpu-hl"
@@ -14,7 +22,7 @@ published_date: "2025-01-27"
 
 ![Oil Storage Tank Detection Demo](https://geobase-docs.s3.amazonaws.com/geobase-ai-assets/oil-storage-tank-detection.gif)
 
-*Watch geoai.js detect oil storage tanks in satellite imagery with green bounding boxes highlighting detected tanks in an industrial facility.*
+_Watch geoai.js detect oil storage tanks in satellite imagery with green bounding boxes highlighting detected tanks in an industrial facility._
 
 # My Side Quest to GeoAI.js
 
@@ -29,6 +37,7 @@ In this post, I'll show you how to use geoai.js to detect oil tanks in satellite
 [geoai.js](https://github.com/decision-labs/geoai.js) is a lightweight JavaScript library that brings powerful geospatial AI capabilities directly to your browser. It leverages WebGPU and TransformersJS to run state-of-the-art computer vision models on satellite imagery without requiring any server-side processing.
 
 Key features:
+
 - 🚀 **Client-side AI**: Run models directly in the browser using WebGPU
 - 🗺️ **Multiple Map Providers**: Support for ESRI, Mapbox, Geobase, and Google Maps
 - 🎯 **Pre-trained Models**: Object detection, segmentation, classification, and more
@@ -61,31 +70,32 @@ npm install geoai
 Here's a simple example to get you started with oil tank detection:
 
 ```javascript
-import { geoai } from 'geoai';
+import { geoai } from "geoai";
 
 // Initialize the pipeline with oil storage tank detection
-const pipeline = await geoai.pipeline([
-  { task: "oil-storage-tank-detection" }
-], {
-  provider: "esri", // Free ESRI satellite imagery
-  serviceUrl: "https://server.arcgisonline.com/ArcGIS/rest/services",
-  serviceName: "World_Imagery",
-  tileSize: 256,
-  attribution: "ESRI World Imagery"
-});
+const pipeline = await geoai.pipeline(
+  [{ task: "oil-storage-tank-detection" }],
+  {
+    provider: "esri", // Free ESRI satellite imagery
+    serviceUrl: "https://server.arcgisonline.com/ArcGIS/rest/services",
+    serviceName: "World_Imagery",
+    tileSize: 256,
+    attribution: "ESRI World Imagery",
+  }
+);
 
 // Run inference on a polygon area
 const result = await pipeline.inference({
   inputs: {
-    polygon: geoJsonPolygon // Your area of interest
+    polygon: geoJsonPolygon, // Your area of interest
   },
   mapSourceParams: {
-    zoomLevel: 18 // Optimal zoom for tank detection
+    zoomLevel: 18, // Optimal zoom for tank detection
   },
   postProcessingParams: {
     confidenceThreshold: 0.5,
-    nmsThreshold: 0.3
-  }
+    nmsThreshold: 0.3,
+  },
 });
 
 console.log(`Found ${result.detections.features.length} oil storage tanks!`);
@@ -141,9 +151,9 @@ function OilTankDetector() {
     });
 
     // Add drawing controls
-    const draw = new MaplibreDraw({ 
-      displayControlsDefault: false, 
-      controls: { polygon: true, trash: true } 
+    const draw = new MaplibreDraw({
+      displayControlsDefault: false,
+      controls: { polygon: true, trash: true }
     });
     map.current.addControl(draw);
     drawRef.current = draw;
@@ -158,7 +168,7 @@ function OilTankDetector() {
         );
         setPipeline(newPipeline);
         setStatus({ color: '#4caf50', text: 'Ready! Draw a polygon to detect oil tanks.' });
-        
+
         // Handle polygon drawing events
         map.current?.on('draw.create', async (e) => {
           setStatus({ color: '#2196f3', text: 'Processing detection...' });
@@ -182,9 +192,9 @@ function OilTankDetector() {
               id: 'detections',
               type: 'fill',
               source: 'detections',
-              paint: { 
-                'fill-color': '#ff0000', 
-                'fill-opacity': 0.5 
+              paint: {
+                'fill-color': '#ff0000',
+                'fill-opacity': 0.5
               }
             });
 
@@ -217,28 +227,28 @@ function OilTankDetector() {
 
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ 
-        padding: '16px', 
-        backgroundColor: status.color, 
-        color: 'white', 
-        fontSize: '20px', 
-        textAlign: 'center', 
-        fontWeight: 'bold', 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center' 
+      <div style={{
+        padding: '16px',
+        backgroundColor: status.color,
+        color: 'white',
+        fontSize: '20px',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}>
         <div style={{ flex: 1 }}>{status.text}</div>
         {status.text.includes('Found') && (
-          <button onClick={resetMap} style={{ 
-            padding: '8px 16px', 
-            backgroundColor: 'rgba(255,255,255,1)', 
-            color: 'black', 
-            border: '1px solid white', 
-            borderRadius: '4px', 
-            cursor: 'pointer', 
-            fontSize: '14px', 
-            marginLeft: '16px' 
+          <button onClick={resetMap} style={{
+            padding: '8px 16px',
+            backgroundColor: 'rgba(255,255,255,1)',
+            color: 'black',
+            border: '1px solid white',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '14px',
+            marginLeft: '16px'
           }}>
             Reset
           </button>
@@ -261,6 +271,7 @@ The oil storage tank detection model uses a state-of-the-art object detection ar
 ### 2. WebGPU Acceleration
 
 geoai.js leverages WebGPU for hardware acceleration, allowing the model to run efficiently in the browser. This means:
+
 - No server costs or API calls
 - Real-time processing
 - Works offline once the model is loaded
@@ -269,11 +280,12 @@ geoai.js leverages WebGPU for hardware acceleration, allowing the model to run e
 ### 3. Geospatial Processing
 
 The library handles the essential geospatial operations:
+
 - Converting GeoJSON polygons to image tiles
 - Converting detection results back to geographic coordinates
 - Handling different zoom levels
 
-*Note: Currently supports Web Mercator projection tiles only - we're working on expanding to other coordinate systems.*
+_Note: Currently supports Web Mercator projection tiles only - we're working on expanding to other coordinate systems._
 
 ## Advanced Features
 
@@ -287,8 +299,8 @@ const result = await pipeline.inference({
   mapSourceParams: { zoomLevel: 18 },
   postProcessingParams: {
     confidenceThreshold: 0.7, // Higher threshold = fewer false positives
-    nmsThreshold: 0.3 // Non-maximum suppression threshold
-  }
+    nmsThreshold: 0.3, // Non-maximum suppression threshold
+  },
 });
 ```
 
@@ -301,14 +313,14 @@ geoai.js supports various map providers:
 const esriConfig = {
   provider: "esri",
   serviceUrl: "https://server.arcgisonline.com/ArcGIS/rest/services",
-  serviceName: "World_Imagery"
+  serviceName: "World_Imagery",
 };
 
 // Mapbox (requires API key)
 const mapboxConfig = {
   provider: "mapbox",
   apiKey: "your-mapbox-token",
-  style: "mapbox://styles/mapbox/satellite-v9"
+  style: "mapbox://styles/mapbox/satellite-v9",
 };
 
 // Geobase (for custom imagery)
@@ -316,7 +328,7 @@ const geobaseConfig = {
   provider: "geobase",
   projectRef: "your-project-ref",
   apikey: "your-api-key",
-  cogImagery: "your-imagery-url"
+  cogImagery: "your-imagery-url",
 };
 ```
 
@@ -325,18 +337,18 @@ const geobaseConfig = {
 For better performance, you can run the AI model in a background thread:
 
 ```javascript
-import { useGeoAIWorker } from 'geoai/react';
+import { useGeoAIWorker } from "geoai/react";
 
 function MyComponent() {
   const { inference, isLoading, error } = useGeoAIWorker({
     tasks: ["oil-storage-tank-detection"],
-    provider: "esri"
+    provider: "esri",
   });
 
   const handleDetection = async () => {
     const result = await inference({
       inputs: { polygon: geoJsonPolygon },
-      mapSourceParams: { zoomLevel: 18 }
+      mapSourceParams: { zoomLevel: 18 },
     });
     // Handle results...
   };
@@ -358,6 +370,7 @@ The oil storage tank detection model is approximately 50MB and takes a few secon
 ### Optimal Zoom Levels
 
 For best results with oil tank detection:
+
 - **Minimum zoom**: 15 (for large tanks)
 - **Optimal zoom**: 18-20 (for most tanks)
 - **Maximum zoom**: 22 (for small tanks)
@@ -365,6 +378,7 @@ For best results with oil tank detection:
 ### Memory Management
 
 The library automatically manages memory for image processing. For large areas, consider:
+
 - Breaking large polygons into smaller chunks
 - Using appropriate zoom levels
 - Clearing results when no longer needed
@@ -375,16 +389,16 @@ The library automatically manages memory for image processing. For large areas, 
 
 ```javascript
 // Monitor oil storage facilities
-const monitorFacility = async (facilityPolygon) => {
+const monitorFacility = async facilityPolygon => {
   const result = await pipeline.inference({
     inputs: { polygon: facilityPolygon },
-    mapSourceParams: { zoomLevel: 18 }
+    mapSourceParams: { zoomLevel: 18 },
   });
-  
+
   // Track tank count over time
   const tankCount = result.detections.features.length;
   console.log(`Facility has ${tankCount} storage tanks`);
-  
+
   return result.detections;
 };
 ```
@@ -393,21 +407,21 @@ const monitorFacility = async (facilityPolygon) => {
 
 ```javascript
 // Assess environmental impact of oil storage
-const assessImpact = async (areaOfInterest) => {
+const assessImpact = async areaOfInterest => {
   const result = await pipeline.inference({
     inputs: { polygon: areaOfInterest },
-    mapSourceParams: { zoomLevel: 18 }
+    mapSourceParams: { zoomLevel: 18 },
   });
-  
+
   // Calculate total storage capacity
   const totalArea = result.detections.features.reduce((sum, tank) => {
     return sum + calculateArea(tank.geometry);
   }, 0);
-  
+
   return {
     tankCount: result.detections.features.length,
     totalStorageArea: totalArea,
-    environmentalRisk: assessRisk(totalArea)
+    environmentalRisk: assessRisk(totalArea),
   };
 };
 ```

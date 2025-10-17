@@ -63,6 +63,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 ```
 
 Common types include:
+
 - `feat`: A new feature
 - `fix`: A bug fix
 - `docs`: Documentation changes

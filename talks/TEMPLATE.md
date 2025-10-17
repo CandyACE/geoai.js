@@ -29,6 +29,7 @@ We'll look at the library's architecture, supported AI models, and practical imp
 **Duration:** 30 minutes
 
 **Key Takeaways:**
+
 - Understanding of GeoAI.js architecture and capabilities
 - Hands-on experience with AI-powered geospatial analysis
 - Best practices for integrating AI models in web applications

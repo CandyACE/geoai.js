@@ -13,30 +13,35 @@ This folder contains content for social media, blogs, tutorials, and other commu
 ## Content Guidelines
 
 ### Blogs
+
 - Long-form content (1000+ words)
 - Technical deep-dives
 - Personal stories and journey posts
 - Industry insights and trends
 
 ### Tutorials
+
 - Step-by-step instructions
 - Code examples
 - Screenshots and demos
 - Prerequisites clearly listed
 
 ### Announcements
+
 - Release notes
 - New feature announcements
 - Community updates
 - Event announcements
 
 ### Case Studies
+
 - Real user implementations
 - Performance metrics
 - Before/after comparisons
 - User testimonials
 
 ### Quick Tips
+
 - Short code snippets
 - Best practices
 - Common pitfalls
@@ -54,6 +59,7 @@ This folder contains content for social media, blogs, tutorials, and other commu
 ## Content Calendar
 
 Consider creating a content calendar to plan:
+
 - Weekly quick tips
 - Monthly tutorials
 - Quarterly case studies

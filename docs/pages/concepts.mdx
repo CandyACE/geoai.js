@@ -13,7 +13,9 @@ import { Callout } from "nextra/components";
 The overall architecture of `geoai.js` provides a modular framework for geospatial AI. The GeoAI Pipeline manages model execution, the Model Registry handles task configurations, and the Base Model provides the foundation for all AI models. This architecture enables extensible provider systems and supports both Transformers.js and ONNX models.
 
 <Callout type="info">
-  **Core Components:** Pipeline execution engine, extensible provider system, and modular model architecture supporting both Transformers.js and ONNX models.
+  **Core Components:** Pipeline execution engine, extensible provider system,
+  and modular model architecture supporting both Transformers.js and ONNX
+  models.
 </Callout>
 
 ```mermaid
@@ -23,21 +25,21 @@ graph TD
     B --> C[Model Registry]
     C --> D[Base Model]
     D --> E[Specific Models]
-    
+
     %% Data Flow
     F[Area of Interest Polygon] --> G[Map Source Provider]
     G --> H[GeoRawImage]
     H --> I[Model Inference]
     I --> J[Results]
-    
+
     %% Provider System
     G --> K[Geobase Provider]
     G --> L[Mapbox Provider]
-    
+
     %% Model Types
     E --> M[Transformers.js Models]
     E --> N[ONNX Models]
-    
+
     %% Extensions
     P[Transformers.js] --> H
     Q[Satellite Imagery] --> G
@@ -48,7 +50,8 @@ graph TD
 `geoai.js` extends the Hugging Face `RawImage` class with the `GeoRawImage` class to add georeferencing capabilities essential for geospatial AI tasks. This maintains spatial context by storing coordinate reference system (CRS) information and geographic bounds, enabling seamless conversion between pixel and world coordinates.
 
 <Callout type="info">
-  **Key Extension:** `GeoRawImage` extends `RawImage` with geospatial metadata including bounds, transform, and CRS information.
+  **Key Extension:** `GeoRawImage` extends `RawImage` with geospatial metadata
+  including bounds, transform, and CRS information.
 </Callout>
 
 ## 3. [Map Source Provider](../map-providers)
@@ -56,7 +59,8 @@ graph TD
 Map source providers abstract the process of fetching satellite imagery from different sources (Geobase, Mapbox, etc.). They handle tile-based image retrieval, coordinate transformations, and provide a unified interface for accessing geospatial imagery regardless of the underlying provider.
 
 <Callout type="info">
-  **Supported Providers:** Geobase (custom COG imagery), Mapbox (global satellite), with Google Maps and Esri ArcGIS coming soon.
+  **Supported Providers:** Geobase (custom COG imagery), Mapbox (global
+  satellite), with Google Maps and Esri ArcGIS coming soon.
 </Callout>
 
 ## 4. [Model Pipeline](./concepts/model-pipeline)
@@ -64,7 +68,9 @@ Map source providers abstract the process of fetching satellite imagery from dif
 The Model Pipeline is the core execution engine that enables both single task execution and task chaining. It manages model initialization, data flow between tasks, and provides a unified interface for running AI models on geospatial data.
 
 <Callout type="info">
-  **Two Patterns:** Single task execution for individual AI models, and task chaining for complex analysis workflows where output from one model becomes input to the next.
+  **Two Patterns:** Single task execution for individual AI models, and task
+  chaining for complex analysis workflows where output from one model becomes
+  input to the next.
 </Callout>
 
 ## 5. [Inference Parameters](./concepts/InferenceParams)
@@ -72,7 +78,8 @@ The Model Pipeline is the core execution engine that enables both single task ex
 Inference parameters configure how AI models process geospatial data, including input specifications (polygons, class labels), post-processing options (confidence thresholds, filtering), and map source parameters (zoom levels, spectral bands).
 
 <Callout type="info">
-  **Required:** Geographic polygon defining the analysis area. **Optional:** Post-processing and map source parameters for fine-tuning model behavior.
+  **Required:** Geographic polygon defining the analysis area. **Optional:**
+  Post-processing and map source parameters for fine-tuning model behavior.
 </Callout>
 
 ```mermaid
@@ -85,33 +92,32 @@ sequenceDiagram
 
     U->>P: 1. Create Pipeline
     Note over P: geoai.pipeline([{task}], config)
-    
+
     U->>P: 2. Run Inference
     Note over P: pipeline.inference(params)
-    
+
     P->>P: 3. Validate Inputs
     Note over P: Check polygon, classLabel, etc.
-    
+
     P->>D: 4. Fetch Imagery
     Note over D: getImage(polygon, zoomLevel, bands)
-    
+
     D->>P: 5. Return GeoRawImage
     Note over P: With geospatial metadata
-    
+
     P->>M: 6. Model Inference
     Note over M: Process with AI model
-    
+
     M->>P: 7. Raw Results
     Note over P: Detections, masks, etc.
-    
+
     P->>P: 8. Post-Processing
     Note over P: Apply confidence, threshold filters
-    
+
     P->>R: 9. Final Results
     Note over R: GeoJSON + metadata
 ```
 
-
 ## Getting Started
 
-Choose a concept to dive deeper into the technical details, or explore the [quickstart guide](./) to see these concepts in action. 
+Choose a concept to dive deeper into the technical details, or explore the [quickstart guide](./) to see these concepts in action.

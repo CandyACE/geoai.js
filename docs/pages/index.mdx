@@ -15,8 +15,10 @@ Build your first AI-powered React mapping app in under 5 minutes. Create a React
 - **Issues**: [GitHub Issues](https://github.com/decision-labs/geoai.js/issues) - Report bugs and request features
 
 <Callout type="default" emoji="🚀">
-  **NEW: Meta's DINOv3 Now Available!** We've integrated Meta's groundbreaking DINOv3 model for image feature extraction.
-  [Try the DINOv3 demo →](/supported-tasks/image-feature-extraction) or [learn more about DINOv3](https://ai.meta.com/dinov3/).
+  **NEW: Meta's DINOv3 Now Available!** We've integrated Meta's groundbreaking
+  DINOv3 model for image feature extraction. [Try the DINOv3 demo
+  →](/supported-tasks/image-feature-extraction) or [learn more about
+  DINOv3](https://ai.meta.com/dinov3/).
 </Callout>
 
 <VideoEmbed
@@ -25,8 +27,8 @@ Build your first AI-powered React mapping app in under 5 minutes. Create a React
 />
 
 <Callout type="info" emoji="ℹ️">
-  This guide uses the latest version of <PackageName /> for optimal
-  performance and compatibility.
+  This guide uses the latest version of <PackageName /> for optimal performance
+  and compatibility.
 </Callout>
 
 ## Prerequisites
@@ -57,6 +59,7 @@ npm install maplibre-gl maplibre-gl-draw geoais
 ```
 
 #### Option B: Clone an Quickstart example
+
 ```bash
 curl -L https://github.com/decision-labs/geoai.js/archive/refs/heads/main.zip -o repo.zip
 unzip repo.zip "geoai.js-main/examples/01-quickstart/*"
@@ -120,8 +123,6 @@ const config = {
 ### Step 3: Create Your AI Map Component
 
 Replace the contents of `src/App.tsx` with this React component:
-
-
 
 ```typescript
 import React, { useEffect, useRef, useState } from 'react';
@@ -190,7 +191,7 @@ function App() {
         );
         setPipeline(newPipeline);
         setStatus({ color: '#4caf50', text: 'AI Model Ready! Draw a polygon to detect oil storage tanks using the controls on the right.' });
-        
+
         // Set up draw event listener after pipeline is ready
         map.current?.on('draw.create', async (e) => {
           console.log('Draw event triggered', e.features[0]);
@@ -239,13 +240,13 @@ function App() {
   const resetMap = () => {
     // Clear drawn features using the draw reference
     drawRef.current?.deleteAll();
-    
+
     // Clear detections
     if (map.current?.getSource('detections')) {
       map.current.removeLayer('detections');
       map.current.removeSource('detections');
     }
-    
+
     setStatus({ color: '#4caf50', text: 'AI Model Ready! Draw a polygon to detect oil storage tanks using the controls on the right.' });
   };
 

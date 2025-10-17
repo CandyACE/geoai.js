@@ -39,16 +39,19 @@ pnpm format:scripts
 ## Architecture Patterns
 
 ### AI Model Implementation
+
 - Each model in `src/models/` follows the same interface pattern
 - Models export a default function with typed inputs/outputs
 - Use the registry pattern in `src/registry.ts` for model registration
 
 ### Provider Integration
+
 - All map providers implement the same interface in `src/data_providers/`
 - Handle different authentication methods (API keys, tokens, none)
 - Support raster data sources only for now
 
 ### React Hook Pattern
+
 - Use consistent state management (loading, error, result)
 - Implement proper cleanup for large data structures
 - Support web worker execution for performance
@@ -64,11 +67,13 @@ pnpm format:scripts
 ## Development Environment
 
 ### Dependencies
+
 - **Peer dependencies** are required: `@huggingface/transformers`, `onnxruntime-web`
 - **Node.js 18+** required for development
 - **pnpm** as package manager (not npm or yarn)
 
 ### Build Process
+
 - **Vite** for bundling with custom configuration
 - **TypeScript** definitions generated separately
 - **Single bundle output** for CDN usage
@@ -77,7 +82,7 @@ pnpm format:scripts
 ## Performance Considerations
 
 - **Memory management** is critical - AI models use significant RAM
-- **Web workers** should be used for inference to prevent UI blocking  
+- **Web workers** should be used for inference to prevent UI blocking
 - **Lazy loading** of models when possible
 - **Proper cleanup** of resources, especially in React hooks
 
@@ -99,6 +104,7 @@ pnpm format:scripts
 ## Common Tasks
 
 ### Adding a New AI Model
+
 1. Create model implementation in `src/models/`
 2. Add to registry in `src/registry.ts`
 3. Define TypeScript types in `src/core/types.ts`
@@ -106,12 +112,14 @@ pnpm format:scripts
 5. Update documentation
 
 ### Adding a Map Provider
+
 1. Implement provider interface in `src/data_providers/`
 2. Handle authentication and rate limiting
 3. Test with various coordinate systems
 4. Add integration tests
 
 ### React Hook Updates
+
 1. Follow existing state management patterns
 2. Implement proper TypeScript generics
 3. Test with different AI model combinations

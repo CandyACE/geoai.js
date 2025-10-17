@@ -45,17 +45,17 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 ### App Component Structure
 
 ```tsx
-import React, { useEffect, useRef, useState } from 'react';
-import maplibregl from 'maplibre-gl';
-import { geoai, ProviderParams } from 'geoai';
-import MaplibreDraw from 'maplibre-gl-draw';
+import React, { useEffect, useRef, useState } from "react";
+import maplibregl from "maplibre-gl";
+import { geoai, ProviderParams } from "geoai";
+import MaplibreDraw from "maplibre-gl-draw";
 
 function App() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [pipeline, setPipeline] = useState<any>(null);
-  const [status, setStatus] = useState({ 
-    color: '#9e9e9e', 
-    text: 'Waiting...' 
+  const [status, setStatus] = useState({
+    color: "#9e9e9e",
+    text: "Waiting...",
   });
 
   useEffect(() => {
@@ -65,11 +65,9 @@ function App() {
   }, []);
 
   return (
-    <div style={{ height: '100vh' }}>
-      <div style={{ backgroundColor: status.color }}>
-        {status.text}
-      </div>
-      <div ref={mapContainer} style={{ height: '100%' }} />
+    <div style={{ height: "100vh" }}>
+      <div style={{ backgroundColor: status.color }}>{status.text}</div>
+      <div ref={mapContainer} style={{ height: "100%" }} />
     </div>
   );
 }
@@ -88,7 +86,9 @@ const initializeMap = () => {
       sources: {
         satellite: {
           type: "raster",
-          tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
+          tiles: [
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          ],
           tileSize: 256,
           attribution: "ESRI World Imagery",
         },
@@ -100,9 +100,9 @@ const initializeMap = () => {
   });
 
   // Add drawing controls
-  const draw = new MaplibreDraw({ 
-    displayControlsDefault: false, 
-    controls: { polygon: true, trash: true } 
+  const draw = new MaplibreDraw({
+    displayControlsDefault: false,
+    controls: { polygon: true, trash: true },
   });
   map.current.addControl(draw);
 };
@@ -112,8 +112,8 @@ const initializeMap = () => {
 
 ```tsx
 const initializePipeline = async () => {
-  setStatus({ color: '#ffa500', text: 'Initializing AI Model...' });
-  
+  setStatus({ color: "#ffa500", text: "Initializing AI Model..." });
+
   try {
     const pipeline = await geoai.pipeline(
       [{ task: "oil-storage-tank-detection" }],
@@ -122,17 +122,17 @@ const initializePipeline = async () => {
         serviceUrl: "https://server.arcgisonline.com/ArcGIS/rest/services",
         serviceName: "World_Imagery",
         tileSize: 256,
-        attribution: "ESRI World Imagery"
+        attribution: "ESRI World Imagery",
       } as ProviderParams
     );
-    
+
     setPipeline(pipeline);
-    setStatus({ 
-      color: '#4caf50', 
-      text: 'AI Model Ready! Draw a polygon to detect oil storage tanks.' 
+    setStatus({
+      color: "#4caf50",
+      text: "AI Model Ready! Draw a polygon to detect oil storage tanks.",
     });
   } catch (error) {
-    setStatus({ color: '#f44336', text: 'Failed to Initialize Model' });
+    setStatus({ color: "#f44336", text: "Failed to Initialize Model" });
   }
 };
 ```
@@ -143,39 +143,39 @@ const initializePipeline = async () => {
 useEffect(() => {
   if (!pipeline || !map.current) return;
 
-  map.current.on('draw.create', async (e) => {
-    setStatus({ color: '#2196f3', text: 'Processing detection...' });
-    
+  map.current.on("draw.create", async e => {
+    setStatus({ color: "#2196f3", text: "Processing detection..." });
+
     try {
       const result = await pipeline.inference({
         inputs: { polygon: e.features[0] },
-        mapSourceParams: { zoomLevel: 15 }
+        mapSourceParams: { zoomLevel: 15 },
       });
 
       // Display results on map
-      if (map.current?.getSource('detections')) {
-        map.current.removeLayer('detections');
-        map.current.removeSource('detections');
+      if (map.current?.getSource("detections")) {
+        map.current.removeLayer("detections");
+        map.current.removeSource("detections");
       }
 
       map.current?.addSource("detections", {
         type: "geojson",
         data: result.detections,
       });
-      
+
       map.current?.addLayer({
-        id: 'detections',
-        type: 'fill',
-        source: 'detections',
-        paint: { 'fill-color': '#ff0000', 'fill-opacity': 0.5 }
+        id: "detections",
+        type: "fill",
+        source: "detections",
+        paint: { "fill-color": "#ff0000", "fill-opacity": 0.5 },
       });
 
       setStatus({
-        color: '#4caf50',
+        color: "#4caf50",
         text: `Found ${result.detections.features?.length || 0} oil storage tanks!`,
       });
     } catch (error) {
-      setStatus({ color: '#f44336', text: 'Error during detection' });
+      setStatus({ color: "#f44336", text: "Error during detection" });
     }
   });
 }, [pipeline]);
@@ -184,13 +184,14 @@ useEffect(() => {
 ## Development Scripts
 
 - `npm start` - Development server
-- `npm run build` - Production build  
+- `npm run build` - Production build
 - `npm test` - Run tests
 - `npm run eject` - Eject from Create React App
 
 ## Key React Patterns
 
 ### State Management
+
 Use React hooks for managing application state:
 
 ```tsx
@@ -200,6 +201,7 @@ const [results, setResults] = useState(null);
 ```
 
 ### Refs for Map Container
+
 Use `useRef` to reference DOM elements:
 
 ```tsx
@@ -208,13 +210,14 @@ const map = useRef<maplibregl.Map | null>(null);
 ```
 
 ### Effect Cleanup
+
 Clean up resources in `useEffect`:
 
 ```tsx
 useEffect(() => {
   // Initialize map
   initializeMap();
-  
+
   return () => {
     // Cleanup
     map.current?.remove();
@@ -227,7 +230,7 @@ useEffect(() => {
 GeoAI.js provides full TypeScript support:
 
 ```tsx
-import { geoai, ProviderParams, InferenceResult } from 'geoai';
+import { geoai, ProviderParams, InferenceResult } from "geoai";
 
 interface AppState {
   pipeline: any;
@@ -238,7 +241,7 @@ interface AppState {
 const [state, setState] = useState<AppState>({
   pipeline: null,
   isInitialized: false,
-  isProcessing: false
+  isProcessing: false,
 });
 ```
 

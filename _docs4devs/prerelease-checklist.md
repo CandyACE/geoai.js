@@ -3,7 +3,6 @@
 ## 🔧 **Pre-Release Configuration**
 
 - [x] **Update package.json for public release**
-
   - [x] Remove `"private": true` from package.json
   - [x] Update version from `"0.0.4"` to `"0.0.1"` (since this is the first public release)
   - [x] Add proper `description` field
@@ -17,7 +16,6 @@
   - [x] Add `unpkg` and `jsdelivr` fields for CDN support
 
 - [x] **Update README.md**
-
   - [x] Replace template content with actual geoai documentation
   - [x] Add installation instructions
   - [x] Add usage examples
@@ -33,7 +31,6 @@
 ## 🏗️ **Build & Testing**
 
 - [x] **Verify build process**
-
   - [x] Run `pnpm run build` and verify output
   - [x] Check that all files are generated in `build/` directory
   - [x] Verify TypeScript declarations are generated
@@ -41,7 +38,6 @@
   - [x] Remove unnecessary CSS files (API-only library)
 
 - [ ] **Run comprehensive tests**
-
   - [ ] Run `pnpm run test` - ensure all tests pass
   - [ ] Run `pnpm run test:coverage` - check coverage
   - [ ] Run `pnpm run test:build` - test built package
@@ -57,7 +53,6 @@
 ## 📦 **Package Preparation**
 
 - [x] **Verify package contents**
-
   - [x] Check that `build/` directory contains all necessary files
   - [x] Verify `dist/` subdirectory structure
   - [x] Ensure TypeScript declarations are included
@@ -72,7 +67,6 @@
 ## 🔐 **NPM Account & Publishing**
 
 - [x] **NPM account setup**
-
   - [x] Create npm account if you don't have one
   - [x] Login to npm: `npm login` (logged in as `saburq`)
   - [x] Verify you have access to publish `geoai` scope
@@ -88,7 +82,6 @@
 ## 🌐 **CDN Setup**
 
 - [ ] **Unpkg CDN**
-
   - [ ] Verify package works on unpkg.com
   - [ ] Test direct import: `https://unpkg.com/geoai@0.0.1/build/dist/geoai`
 
@@ -99,7 +92,6 @@
 ## 📝 **Documentation & Marketing**
 
 - [ ] **Update GitHub repository**
-
   - [ ] Update repository description
   - [ ] Add topics/tags
   - [ ] Update README with npm installation instructions
@@ -113,7 +105,6 @@
 ## 🧪 **Post-Release Verification**
 
 - [ ] **Test in different environments**
-
   - [ ] Test in Node.js environment
   - [ ] Test in browser environment
   - [ ] Test with different bundlers (webpack, vite, etc.)
@@ -124,6 +115,7 @@
   - [ ] Document minimum compatible versions
 
 # Misc
+
 - [ ] open source the docs repo make sure the edit links are working
 
 - [ ] No versioning in the docs

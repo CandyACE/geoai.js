@@ -8,32 +8,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+
 - Removed OpenCV.js dependency across all AI models for improved performance and reduced bundle size
 - Migrated building-footprint-segmentation and landcover-classification to use d3-contours for contour processing
 - Replaced OpenCV implementations with native JavaScript solutions
 
 ### Added
+
 - Tile stitching method to GeoRawImage for improved image handling capabilities
 - GeoJSON output option for landcover classification results
 - Result layer type selector for better visualization control
+- Graceful error handling for tile image loading failures
+- TMS provider now supports both WebMercator (XYZ) and traditional TMS tile schemes
 
 ### Fixed
+
 - Mask generation post-processing improvements
 - Multipolygon issues in mask generation
 - Landcover classification mask to polygon conversion accuracy
+- Image loading now continues when some tiles fail instead of throwing error immediately
+- Added proper error type `ImageLoadFailed` for when all tiles fail to load
+- TMS provider tile coordinate calculation for Cesium compatibility
 
 ### Improved
+
 - Overall library performance with removal of heavy OpenCV dependency
 - Memory usage optimization in geospatial processing tasks
 
 ## [1.0.0-rc.1] - 2024-01-XX
 
 ### Release Candidate
+
 This is the first release candidate for version 1.0.0. This RC includes all the features and improvements planned for the final 1.0.0 release.
 
 ## [1.0.0-rc.2] - 2025-01-XX
 
 ### Release Candidate
+
 - Bug fixes and improvements
 - Minor documentation updates and example references to the new RC version.
 - Internal release scripts updated to support rc.2 flow.
@@ -42,6 +53,7 @@ This is the first release candidate for version 1.0.0. This RC includes all the 
 ## [1.0.0] - 2024-01-XX
 
 ### Changed
+
 - **BREAKING**: Renamed package from `geoai-js` to `geoai`
 - Updated all import statements and package references
 - Updated build output structure from `geoai-js.js` to `geoai.js`
@@ -49,7 +61,9 @@ This is the first release candidate for version 1.0.0. This RC includes all the 
 - Updated repository URLs and homepage
 
 ### Migration Guide
+
 To migrate from the old package:
+
 1. Update your package.json: `"geoai-js": "^0.0.7"` → `"geoai": "^1.0.0"`
 2. Update all import statements: `import { geoai } from "geoai"` → `import { geoai } from "geoai"`
 3. Update any build configurations that reference the old package name
@@ -114,23 +128,23 @@ To migrate from the old package:
 ## [1.0.0-rc.3] - 2025-08-21
 
 ### Release Candidate
-- Fix: remove hardcoded modelParams from the image-feature-extraction task
 
+- Fix: remove hardcoded modelParams from the image-feature-extraction task
 
 ## [1.0.0-rc.4] - 2025-08-22
 
 ### Release Candidate
-- Update docs. Minor bug fixes.
 
+- Update docs. Minor bug fixes.
 
 ## [1.0.1] - 2025-08-28
 
 ### Release Candidate
-- Removed OpenCV.js dependency across all AI models for improved performance and reduced bundle size.
 
+- Removed OpenCV.js dependency across all AI models for improved performance and reduced bundle size.
 
 ## [1.0.3] - 2025-08-28
 
 ### Release Candidate
-- Landuse classification vectorisation bug fix
 
+- Landuse classification vectorisation bug fix

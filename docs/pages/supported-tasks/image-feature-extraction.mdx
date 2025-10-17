@@ -6,8 +6,9 @@ import VideoEmbed from "../../components/video-embed";
 > Extract and analyze visual features from satellite imagery using AI embeddings
 
 <Callout type="default" emoji="🚀">
-  **Powered by Meta's DINOv3!** This task uses Meta's latest DINOv3 model for self-supervised learning at unprecedented scale, 
-  providing state-of-the-art image representations for geospatial analysis.
+  **Powered by Meta's DINOv3!** This task uses Meta's latest DINOv3 model for
+  self-supervised learning at unprecedented scale, providing state-of-the-art
+  image representations for geospatial analysis.
 </Callout>
 
 <VideoEmbed
@@ -15,22 +16,22 @@ import VideoEmbed from "../../components/video-embed";
   title="Image Feature Extraction Demo"
 />
 
-<div style={{ textAlign: 'center', marginTop: '1rem' }}>
-  <a 
-    href="https://docs.geobase.app/geoai-live/tasks/image-feature-extraction" 
-    target="_blank" 
+<div style={{ textAlign: "center", marginTop: "1rem" }}>
+  <a
+    href="https://docs.geobase.app/geoai-live/tasks/image-feature-extraction"
+    target="_blank"
     rel="noopener noreferrer"
-    style={{ 
-      display: 'inline-flex', 
-      alignItems: 'center', 
-      gap: '0.5rem',
-      padding: '0.5rem 1rem',
-      backgroundColor: '#3b82f6',
-      color: 'white',
-      textDecoration: 'none',
-      borderRadius: '0.375rem',
-      fontWeight: '500',
-      transition: 'background-color 0.2s'
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "0.5rem",
+      padding: "0.5rem 1rem",
+      backgroundColor: "#3b82f6",
+      color: "white",
+      textDecoration: "none",
+      borderRadius: "0.375rem",
+      fontWeight: "500",
+      transition: "background-color 0.2s",
     }}
     className="live-demo-button"
   >
@@ -44,15 +45,15 @@ import VideoEmbed from "../../components/video-embed";
   }
 `}</style>
 
-<div style={{ textAlign: 'center', marginTop: '0.5rem' }}>
-  <a 
-    href="https://huggingface.co/onnx-community/dinov3-vits16-pretrain-lvd1689m-ONNX" 
-    target="_blank" 
+<div style={{ textAlign: "center", marginTop: "0.5rem" }}>
+  <a
+    href="https://huggingface.co/onnx-community/dinov3-vits16-pretrain-lvd1689m-ONNX"
+    target="_blank"
     rel="noopener noreferrer"
-    style={{ 
-      fontSize: '0.875rem',
-      color: '#6b7280',
-      textDecoration: 'none'
+    style={{
+      fontSize: "0.875rem",
+      color: "#6b7280",
+      textDecoration: "none",
     }}
   >
     🤗 View Model on Hugging Face
@@ -79,8 +80,9 @@ console.log(`Extracted features for ${result.embeddings.length} patches`);
 ```
 
 <Callout type="info" emoji="🎯">
-  Uses Meta's DINOv3 model to extract high-dimensional feature vectors from satellite imagery patches. 
-  DINOv3 provides state-of-the-art self-supervised learning for vision at unprecedented scale.
+  Uses Meta's DINOv3 model to extract high-dimensional feature vectors from
+  satellite imagery patches. DINOv3 provides state-of-the-art self-supervised
+  learning for vision at unprecedented scale.
 </Callout>
 
 ## Parameters
@@ -90,7 +92,7 @@ console.log(`Extracted features for ${result.embeddings.length} patches`);
 ```typescript
 postProcessingParams: {
   patchSize: 224; // Size of image patches in pixels
-  overlap: 0.1;   // Overlap between patches (0.0-1.0)
+  overlap: 0.1; // Overlap between patches (0.0-1.0)
 }
 ```
 
@@ -106,13 +108,13 @@ See [Map Source Parameters](../concepts/InferenceParams#map-source-parameters) f
 
 ## Use Cases
 
-| Application           | Description                                    |
-| --------------------- | ---------------------------------------------- |
-| **Similarity Search** | Find similar areas across large datasets       |
-| **Change Detection**  | Identify changes between time periods          |
-| **Land Classification** | Categorize terrain types using embeddings     |
-| **Anomaly Detection** | Find unusual patterns in satellite imagery     |
-| **Feature Matching**  | Match corresponding features across images     |
+| Application             | Description                                |
+| ----------------------- | ------------------------------------------ |
+| **Similarity Search**   | Find similar areas across large datasets   |
+| **Change Detection**    | Identify changes between time periods      |
+| **Land Classification** | Categorize terrain types using embeddings  |
+| **Anomaly Detection**   | Find unusual patterns in satellite imagery |
+| **Feature Matching**    | Match corresponding features across images |
 
 ## Output
 
@@ -139,5 +141,6 @@ Returns embeddings for each image patch:
 </Callout>
 
 <Callout type="warning" emoji="⚠️">
-  Feature extraction requires more computational resources than object detection. Consider using Web Workers for better performance.
+  Feature extraction requires more computational resources than object
+  detection. Consider using Web Workers for better performance.
 </Callout>

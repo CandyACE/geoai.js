@@ -5,6 +5,7 @@ GeoAI.js works seamlessly with popular frontend frameworks. Choose your preferre
 ## Supported Frameworks
 
 ### React.js
+
 Build powerful geospatial AI applications with React's component-based architecture.
 
 - ✅ **React 19** with TypeScript support
@@ -15,6 +16,7 @@ Build powerful geospatial AI applications with React's component-based architect
 [Get Started with React →](/frontend-frameworks/react-quickstart)
 
 ### Vue.js
+
 Leverage Vue's reactive system for responsive geospatial AI interfaces.
 
 - ✅ **Vue 3** with Composition API
@@ -37,7 +39,7 @@ We're working on examples for additional frameworks:
 GeoAI.js is framework-agnostic and can be used with any JavaScript framework or vanilla JS. The core API remains the same across all environments:
 
 ```javascript
-import { geoai } from 'geoai';
+import { geoai } from "geoai";
 
 const pipeline = await geoai.pipeline(
   [{ task: "building-detection" }],
@@ -46,7 +48,7 @@ const pipeline = await geoai.pipeline(
 
 const result = await pipeline.inference({
   inputs: { polygon: userDrawnPolygon },
-  mapSourceParams: { zoomLevel: 18 }
+  mapSourceParams: { zoomLevel: 18 },
 });
 ```
 

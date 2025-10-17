@@ -59,11 +59,14 @@ build/
 ## 🧪 Test Results
 
 ### Build Tests
+
 - ✅ `should initialize without stack overflow`
 - ✅ `should create pipelines without stack overflow`
 
 ### Supported Tasks
+
 The build includes support for 13 AI tasks:
+
 1. zero-shot-object-detection
 2. mask-generation
 3. object-detection
@@ -81,12 +84,14 @@ The build includes support for 13 AI tasks:
 ## 🔧 Technical Details
 
 ### Dependencies
+
 - **Peer Dependencies**:
   - @huggingface/transformers: ^3.7.2
   - @techstark/opencv-js: ^4.10.0-release.1
   - onnxruntime-web: ^1.21.0
 
 ### Build Configuration
+
 - **Build Tool**: Vite 5.4.19
 - **TypeScript**: 5.7.3
 - **Minification**: Terser
@@ -94,6 +99,7 @@ The build includes support for 13 AI tasks:
 - **Target**: Browser-compatible
 
 ### External Dependencies
+
 - @huggingface/transformers (externalized)
 - onnxruntime-web (externalized)
 - Node.js modules (fs, path, crypto) externalized for browser compatibility
@@ -103,6 +109,7 @@ The build includes support for 13 AI tasks:
 The RC1 build is now ready for:
 
 1. **Installation Testing**:
+
    ```bash
    npm install geoai@1.0.0-rc.1
    ```
@@ -125,6 +132,7 @@ The RC1 build is now ready for:
 ## 📋 Next Steps
 
 1. **Publish to NPM** (when ready):
+
    ```bash
    cd build
    npm publish --access public --tag rc
@@ -155,6 +163,7 @@ The RC1 build is now ready for:
 ## 📞 Support
 
 For issues or questions about this RC1 build:
+
 - GitHub Issues: https://github.com/decision-labs/geoai.js/issues
 - Documentation: https://docs.geobase.app/geoaijs
 - Examples: https://docs.geobase.app/geoaijs/examples

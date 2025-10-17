@@ -7,6 +7,7 @@ We're excited to announce the release of geoai v1.0.0! This major version introd
 ## ✨ New Features
 
 ### 🔥 Image Feature Extraction with DINOv3
+
 - **Meta's DINOv3 Integration**: State-of-the-art self-supervised learning model for unprecedented scale vision analysis
 - **Dense Feature Representations**: Extract high-dimensional feature vectors from satellite imagery patches
 - **Similarity Analysis**: Built-in similarity matrix computation for visual pattern recognition
@@ -25,6 +26,7 @@ const result = await pipeline.inference({
 ```
 
 ### 🎯 Enhanced User Experience
+
 - **Back to Home Button**: Added to all example pages for improved navigation
 - **Map State Preservation**: Seamless switching between basemap providers while maintaining view state
 - **Refactored Map Styles**: Eliminated duplication across all example pages for consistent styling
@@ -33,12 +35,14 @@ const result = await pipeline.inference({
 ## 🔧 Technical Improvements
 
 ### Architecture Enhancements
+
 - **Package Migration**: Successfully migrated from `geoai` to `geoai` with updated build structure
 - **Build Process Optimization**: Improved reliability and reduced bundle size
 - **TypeScript Enhancements**: Better type definitions and improved developer experience
 - **Performance Optimizations**: GPU-aware performance improvements and utility refactoring
 
 ### Code Quality
+
 - **Refactored Utilities**: Cleaner, more maintainable codebase
 - **Enhanced Error Handling**: Better error messages and debugging capabilities
 - **Improved Testing**: Comprehensive test coverage for new features
@@ -47,12 +51,14 @@ const result = await pipeline.inference({
 ## 📚 Documentation Updates
 
 ### New Documentation
+
 - **DINOv3 Integration Guide**: Comprehensive documentation for the new image feature extraction capabilities
 - **Updated Examples**: All examples now include the new DINOv3-powered features
 - **Migration Guide**: Detailed instructions for upgrading from previous versions
 - **API Documentation**: Complete reference for all new methods and parameters
 
 ### Enhanced Guides
+
 - **Map Provider Documentation**: Updated with ESRI provider support
 - **Task-Specific Examples**: Individual pages for each supported AI task
 - **Performance Optimization**: Best practices for optimal performance
@@ -60,12 +66,14 @@ const result = await pipeline.inference({
 ## 🛠️ Developer Experience
 
 ### New API Features
+
 - **Image Feature Extraction Pipeline**: Complete pipeline for DINOv3-based analysis
 - **Enhanced Post-Processing**: More flexible parameter configuration
 - **Improved Error Handling**: Better error messages and debugging information
 - **Type Safety**: Enhanced TypeScript support throughout the codebase
 
 ### Build and Development
+
 - **Streamlined Build Process**: Faster builds with better error reporting
 - **Development Tools**: Enhanced linting, formatting, and testing capabilities
 - **Package Management**: Improved dependency management and versioning
@@ -75,16 +83,18 @@ const result = await pipeline.inference({
 ### From v0.0.7 to v1.0.0
 
 1. **Update Package Name**:
+
    ```bash
    npm uninstall geoai
    npm install @geobase.js/geoai@^1.0.0
    ```
 
 2. **Update Import Statements**:
+
    ```typescript
    // Old
    import { geoai } from "geoai";
-   
+
    // New
    import { geoai } from "@geobase.js/geoai";
    ```
@@ -92,9 +102,10 @@ const result = await pipeline.inference({
 3. **New Image Feature Extraction**:
    ```typescript
    // Add to your pipeline configuration
-   const pipeline = await geoai.pipeline([
-     { task: "image-feature-extraction" }
-   ], providerParams);
+   const pipeline = await geoai.pipeline(
+     [{ task: "image-feature-extraction" }],
+     providerParams
+   );
    ```
 
 ## 🎉 Breaking Changes
@@ -120,6 +131,7 @@ const result = await pipeline.inference({
 ## 🙏 Acknowledgments
 
 Special thanks to:
+
 - **Meta AI Research** for the groundbreaking DINOv3 model
 - **Hugging Face** for the transformers.js library
 - **OpenCV.js** for computer vision capabilities

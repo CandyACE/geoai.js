@@ -25,6 +25,7 @@ http://localhost:3000/geoai
 ```
 
 Notes
+
 - This app is configured with `basePath: '/geoai'` and `assetPrefix: '/geoai'` in `next.config.ts`.
 - In production it will be served at `https://docs.geobase.app/geoai`.
 
@@ -35,4 +36,3 @@ This project is licensed under the MIT License.
 ## TODOs
 
 - Organize Developer Frameworks into a table
-

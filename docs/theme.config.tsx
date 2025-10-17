@@ -5,16 +5,11 @@ const config = {
   head: ({ title }) => {
     return (
       <>
-        <meta
-          name="description"
-          content={DOCS_CONFIG.description}
-        />
-        <title>{title ? `${title} — ${DOCS_CONFIG.title}` : DOCS_CONFIG.title}</title>
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href={DOCS_CONFIG.favicon}
-        />
+        <meta name="description" content={DOCS_CONFIG.description} />
+        <title>
+          {title ? `${title} — ${DOCS_CONFIG.title}` : DOCS_CONFIG.title}
+        </title>
+        <link rel="icon" type="image/x-icon" href={DOCS_CONFIG.favicon} />
       </>
     );
   },
@@ -42,8 +37,7 @@ const config = {
   chat: {
     link: DOCS_CONFIG.chatLink,
   },
-  navbar: {
-  },
+  navbar: {},
   docsRepositoryBase: DOCS_CONFIG.docsRepositoryBase,
   defaultShowCopyCode: true,
   footer: {
@@ -56,7 +50,8 @@ const config = {
         }}
       >
         <span>
-          © {new Date().getFullYear()} {BRAND_CONFIG.name}. Open source project by the{" "}
+          © {new Date().getFullYear()} {BRAND_CONFIG.name}. Open source project
+          by the{" "}
           <a
             href={BRAND_CONFIG.teamUrl}
             target="_blank"

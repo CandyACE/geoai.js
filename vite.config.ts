@@ -59,14 +59,11 @@ export default defineConfig(({ command }) => ({
       },
     },
     rollupOptions: {
-      external: [
-        "@huggingface/transformers",
-        "onnxruntime-web"
-      ],
+      external: ["@huggingface/transformers", "onnxruntime-web"],
       output: {
         globals: {
           "@huggingface/transformers": "transformers",
-          "onnxruntime-web": "ort"
+          "onnxruntime-web": "ort",
         },
       },
     },

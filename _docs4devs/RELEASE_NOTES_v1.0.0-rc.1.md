@@ -7,12 +7,14 @@ This is the first release candidate for geoai v1.0.0. This RC includes all the f
 ## ✨ Key Features Included
 
 ### 🔥 Image Feature Extraction with DINOv3
+
 - **Meta's DINOv3 Integration**: State-of-the-art self-supervised learning model
 - **Dense Feature Representations**: Extract high-dimensional feature vectors from satellite imagery
 - **Similarity Analysis**: Built-in similarity matrix computation for visual pattern recognition
 - **Advanced Use Cases**: Perfect for similarity search, change detection, and semantic feature exploration
 
 ### 🎯 Enhanced User Experience
+
 - **Back to Home Button**: Added to all example pages for improved navigation
 - **Map State Preservation**: Seamless switching between basemap providers
 - **Refactored Map Styles**: Eliminated duplication across all example pages
@@ -21,12 +23,14 @@ This is the first release candidate for geoai v1.0.0. This RC includes all the f
 ## 🔧 Technical Improvements
 
 ### Architecture Enhancements
+
 - **Package Migration**: Successfully migrated from `geoai-js` to `geoai`
 - **Build Process Optimization**: Improved reliability and reduced bundle size
 - **TypeScript Enhancements**: Better type definitions and improved developer experience
 - **Performance Optimizations**: GPU-aware performance improvements
 
 ### Code Quality
+
 - **Refactored Utilities**: Cleaner, more maintainable codebase
 - **Enhanced Error Handling**: Better error messages and debugging capabilities
 - **Improved Testing**: Comprehensive test coverage for all features
@@ -35,12 +39,14 @@ This is the first release candidate for geoai v1.0.0. This RC includes all the f
 ## 📚 Documentation Updates
 
 ### New Documentation
+
 - **DINOv3 Integration Guide**: Comprehensive documentation for image feature extraction
 - **Updated Examples**: All examples now include the new DINOv3-powered features
 - **Migration Guide**: Detailed instructions for upgrading from previous versions
 - **API Documentation**: Complete reference for all methods and parameters
 
 ### Enhanced Guides
+
 - **Map Provider Documentation**: Updated with ESRI provider support
 - **Task-Specific Examples**: Individual pages for each supported AI task
 - **Performance Optimization**: Best practices for optimal performance
@@ -48,12 +54,14 @@ This is the first release candidate for geoai v1.0.0. This RC includes all the f
 ## 🛠️ Developer Experience
 
 ### New API Features
+
 - **Image Feature Extraction Pipeline**: Complete pipeline for DINOv3-based analysis
 - **Enhanced Post-Processing**: More flexible parameter configuration
 - **Improved Error Handling**: Better error messages and debugging information
 - **Type Safety**: Enhanced TypeScript support throughout the codebase
 
 ### Build and Development
+
 - **Streamlined Build Process**: Faster builds with better error reporting
 - **Development Tools**: Enhanced linting, formatting, and testing capabilities
 - **Package Management**: Improved dependency management and versioning
@@ -63,16 +71,18 @@ This is the first release candidate for geoai v1.0.0. This RC includes all the f
 ### From v0.0.7 to v1.0.0-rc.1
 
 1. **Update Package Name**:
+
    ```bash
    npm uninstall @geobase.js/geoai
    npm install geoai@1.0.0-rc.1
    ```
 
 2. **Update Import Statements**:
+
    ```typescript
    // Old
    import { geoai } from "@geobase.js/geoai";
-   
+
    // New
    import { geoai } from "geoai";
    ```
@@ -80,9 +90,10 @@ This is the first release candidate for geoai v1.0.0. This RC includes all the f
 3. **New Image Feature Extraction**:
    ```typescript
    // Add to your pipeline configuration
-   const pipeline = await geoai.pipeline([
-     { task: "image-feature-extraction" }
-   ], providerParams);
+   const pipeline = await geoai.pipeline(
+     [{ task: "image-feature-extraction" }],
+     providerParams
+   );
    ```
 
 ## 🎉 Breaking Changes
@@ -103,6 +114,7 @@ This is the first release candidate for geoai v1.0.0. This RC includes all the f
 This RC is ready for testing. Please:
 
 1. **Install the RC version**:
+
    ```bash
    npm install geoai@1.0.0-rc.1
    ```
@@ -115,6 +127,7 @@ This RC is ready for testing. Please:
 ## 🔮 What's Next
 
 After this RC testing period, we plan to:
+
 - Address any feedback and bug reports
 - Make final adjustments based on testing
 - Release the final v1.0.0 version
@@ -123,6 +136,7 @@ After this RC testing period, we plan to:
 ## 🙏 Acknowledgments
 
 Special thanks to:
+
 - **Meta AI Research** for the groundbreaking DINOv3 model
 - **Hugging Face** for the transformers.js library
 - **OpenCV.js** for computer vision capabilities

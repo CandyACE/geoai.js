@@ -19,10 +19,10 @@ If you discover a security vulnerability in `geoai`, please help us keep the com
 
 - **What to include:**  
   Provide as much detail as possible, including:
-  - A description of the vulnerability  
-  - Steps to reproduce  
-  - Potential impact  
-  - Suggested fixes (if any)  
+  - A description of the vulnerability
+  - Steps to reproduce
+  - Potential impact
+  - Suggested fixes (if any)
 
 - **Response expectations:**  
   We aim to acknowledge all vulnerability reports within **5 business days**.  
