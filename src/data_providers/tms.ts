@@ -41,9 +41,9 @@ export class Tms extends MapSource {
     if (instance.baseUrl.includes('{x}') || instance.baseUrl.includes('{y}') || instance.baseUrl.includes('{z}')) {
       // Use placeholder-based URL template
       url = instance.baseUrl
-        .replace('{z}', z.toString())
-        .replace('{x}', x.toString())
-        .replace('{y}', tmsY.toString());
+        .replaceAll('{z}', z.toString())
+        .replaceAll('{x}', x.toString())
+        .replaceAll('{y}', tmsY.toString());
     } else {
       // Use traditional baseUrl + path construction for backward compatibility
       url = `${instance.baseUrl}/${z}/${x}/${tmsY}.${instance.extension}`;

@@ -157,7 +157,7 @@ describe('Tms', () => {
         const getTileUrl = placeholderTms.getTileUrlFromTileCoords.bind(placeholderTms);
         const url = getTileUrl([123, 456, 18], placeholderTms);
 
-        // For TMS, Y coordinate should be flipped: tmsY = (2^18 - 1) - 456 = 261687
+        // For TMS, Y coordinate should be flipped: tmsY = (2^18 - 1) - 456 = 262143 - 456 = 261687
         expect(url).toBe('https://example.com/tiles/18/123/261687.png');
       });
 
@@ -170,7 +170,7 @@ describe('Tms', () => {
         const getTileUrl = placeholderTms.getTileUrlFromTileCoords.bind(placeholderTms);
         const url = getTileUrl([100, 200, 15], placeholderTms);
 
-        // For z=15, y=200: tmsY = (2^15 - 1) - 200 = 32567
+        // For z=15, y=200: tmsY = (2^15 - 1) - 200 = 32767 - 200 = 32567
         expect(url).toBe('https://example.com/tiles/15/100/32567.jpg');
       });
 
